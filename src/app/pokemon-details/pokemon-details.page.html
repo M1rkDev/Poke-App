@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pokemon-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <!-- <ion-grid>
+  <ion-row>
+    <ion-col class="ion-text-center ion-text-capitalize">
+      <h1>{{pokemon.name}}</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="2"></ion-col>
+    <ion-col size="8" class="ion-text-center">
+      <ion-img [src]="pokemon.img"></ion-img>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list lines="true">
+        <ion-list-header color="danger">
+          <ion-label class="ion-text-center"><h1>Dettagli Pokemon</h1></ion-label>
+        </ion-list-header>
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="(pokemonData | async) as pData">
+    <ion-col size="6" class="ion-align-self-center">
+      <ion-list>
+        <ion-list-header>
+          <ion-label class="ion-text-center">Abilità</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let ab of pData.abilities">
+          <ion-label>{{ab.ability.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col size="6">
+      <ion-list>
+        <ion-list-header>
+          <ion-label class="ion-text-center">Dimensioni</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Peso</ion-label>
+          <ion-badge>{{pData.weight}}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Altezza</ion-label>
+          <ion-badge>{{pData.height}}</ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid> -->
+
+<ion-card *ngIf="pokemon">
+  <ion-row>
+  <ion-col size="2"></ion-col>
+    <ion-col size="8" class="ion-text-center">
+      <img  [src]="pokemon.img">
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+
+  <ion-card-header>
+    <ion-card-title class="ion-text-center ion-text-capitalize"><h1>{{pokemon.name}}</h1></ion-card-title>
+  </ion-card-header>
+  <ion-row>
+    <ion-col size="6" class="ion-text-center">
+      <ion-button [color]="isFavorite ? 'danger' : '' " (click)="addToFavorite()"><ion-icon name="heart"></ion-icon></ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center">
+      <ion-button (click)="share()"><ion-icon name="share"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-card-content >
+    <ion-row>
+      <ion-col size="12">
+        <ion-list lines="true">
+          <ion-list-header color="danger">
+            <ion-label class="ion-text-center"><h1>Dettagli Pokemon</h1></ion-label>
+          </ion-list-header>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="(pokemonData | async) as pData">
+      <ion-col size="6" class="ion-align-self-center">
+        <ion-list>
+          <ion-list-header>
+            <ion-label class="ion-text-center" color="danger"><h2>Abilità</h2></ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let ab of pData.abilities">
+            <ion-label>{{ab.ability.name}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="6">
+        <ion-list>
+          <ion-list-header>
+            <ion-label class="ion-text-center" color="warning"><h2>Dimensioni</h2></ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Peso</ion-label>
+            <ion-badge>{{pData.weight}}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-label>Altezza</ion-label>
+            <ion-badge>{{pData.height}}</ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

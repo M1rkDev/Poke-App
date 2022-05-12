@@ -1,0 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="(pokemons | async) as pokemons">
+  {{pokemons | json}}
+</ion-content>
